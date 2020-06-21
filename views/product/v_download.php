@@ -10,4 +10,4 @@
 <hr>
 
 
-<p><a type="submit" href="<?=BASE_URL?>/application/user">Назад</a></p>
+<p><a href="<?=BASE_URL?>/application/user">Назад</a></p>

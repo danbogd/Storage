@@ -19,10 +19,14 @@ if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
     // хэш загружаемого файла
     $hash = md5_file($uploadfile);
     
-
+    
     // запись в СУБД
-    $fields = [ 'file_name' => $nameFile, 'user_id' => $_SESSION['id_user'], 'hash' => $hash, 'file_time' => $file_time ];
+    $fields = ['file_name' => $nameFile, 'user_id' => $_SESSION['id_user'], 'hash' => $hash, 'file_time' => $file_time ];
     filesAdd($fields);
+    $name = lastId();
+    $id = $name[0]["file_id"];
+    
+    
 
 } else {
     echo "Возможная атака с помощью файловой загрузки!\n";
@@ -33,5 +37,7 @@ if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
 
 // print "</pre>";
 
-header('Location: ' . BASE_URL . 'application/user');
+
+
+header('Location: ' . BASE_URL . 'application/blockchain/' . $id);
 exit();

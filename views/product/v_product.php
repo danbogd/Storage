@@ -24,46 +24,29 @@
 
 
 
- 
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>  
 
 
 <hr>
 
-<form enctype="multipart/form-data" action="upload.php" method="POST">
+<form   enctype="multipart/form-data"  action="upload.php" method="POST" >
     <!-- Поле MAX_FILE_SIZE должно быть указано до поля загрузки файла -->
     <input type="hidden" name="MAX_FILE_SIZE" value="3000000" />
     <!-- Название элемента input определяет имя в массиве $_FILES -->
     Загрузить файлы на сервер: <input name="userfile" type="file" />
-    <input type="submit" value="Загрузить" />
+   <input  type="submit" value="Загрузить" /> 
+
 </form>
 
-<hr>
 
-
-
-
-
-
-<main>
-
-
-<script type="text/javascript" src="<?=BASE_URL?>assets/js/web3.js"></script>
-<script type="text/javascript" src="<?=BASE_URL?>assets/js/account.js"></script>
-  
-        
+	        
 
 		
         
 
-        <p><i><b>Дополнительная информация:</b></i></p>
+        
 
         
-        <p><i>TxID: <span id="tid"></span></i></p>
-        <p><i>Баланс кошелька <span id="balance"></span> ETH</i></p>
-        <p><i>Адрес кошелька <span id="account"></span></i></p>
-        <p><i>Адрес контракта в сети Ethereum <span id="contractAddress"></span></i></p>
-
-</main>    
         
         
 

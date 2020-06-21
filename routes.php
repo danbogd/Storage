@@ -38,6 +38,13 @@ return (function(){
 			'controller' => 'application/user',
 			
 		],
+
+		[
+			'test' => "/^application\/blockchain\/($normUrl)\/?$/",
+			'controller' => 'application/blockchain',
+			'params' => ['id' => 1]
+		],
+
 		[
 			'test' => "/^auth\/login\/?$/",
 			'controller' => 'auth/login'

@@ -232,5 +232,5 @@ contract.getPastEvents('Write', {
 }, function(error, events){  })
 .then(function(events){
     console.log(events.length); // same results as the optional callback above
-document.getElementById('writeCount').textContent = events.length;    
+//document.getElementById('writeCount').textContent = events.length;    
 });

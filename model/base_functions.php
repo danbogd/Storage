@@ -19,6 +19,12 @@ function usersFiles(int $id_user){
 		return $query->fetchAll();
 	}
 
+function lastId(){
+		$sql = "SELECT file_id FROM files ORDER BY file_id DESC LIMIT 1";
+		$query = dbQuery($sql);
+		return $query->fetchAll();
+}
+ 
 
 function fileDel($id) : bool{
 		$sql = "DELETE FROM files WHERE file_id = $id";

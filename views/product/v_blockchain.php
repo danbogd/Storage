@@ -40,15 +40,14 @@
 <input id = "id" type="hidden" name="id" value="<?=$id?>">
  
 
-<a href="https://rinkeby.etherscan.io" target="_blank" >Etherscan</a> 
 
 
 
-<!-- <a href="https://rinkeby.etherscan.io/tx/" id="tid1">Etherscan</a>  -->
+<a href="https://rinkeby.etherscan.io/tx/" id="tid1" target="_blank">Etherscan</a> 
 
 
 
-<!-- <input  type="text" onchange="update_href('link', this.value );" > -->
+
 
 
 

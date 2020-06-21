@@ -260,7 +260,8 @@ web3.eth.getTransactionCount(account1, (err, txCount) => {
     
     document.getElementById('tid').textContent = txHash;
   // Use this txHash to find the contract on Etherscan!
-    
+    let txHash2 = 'https://rinkeby.etherscan.io/tx/' + txHash;
+    document.getElementById('tid1').href = txHash2;
   })
   })
 
@@ -275,7 +276,7 @@ web3.eth.getTransactionCount(account1, (err, txCount) => {
 
 
 // alert("Хэш файла записан в блокчейн");
-// let txHash2 = 'https://rinkeby.etherscan.io/tx/' + txHash;
+
 
 
 // $("#button3").click(function() {

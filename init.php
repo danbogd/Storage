@@ -3,6 +3,7 @@
 const HOST = 'http://localhost';
 const BASE_URL = '/PHP/';
 
+
 const DB_HOST = 'localhost';
 const DB_NAME = 'php1simple';
 const DB_USER = 'root';

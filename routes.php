@@ -46,6 +46,12 @@ return (function(){
 		],
 
 		[
+			'test' => "/^application\/check\/($normUrl)\/?$/",
+			'controller' => 'application/check',
+			'params' => ['id' => 1]
+		],
+
+		[
 			'test' => "/^auth\/login\/?$/",
 			'controller' => 'auth/login'
 		]

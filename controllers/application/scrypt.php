@@ -12,6 +12,16 @@ $file = $fileInfo[0]["file_name"];
 fileDel($id);
 //file_download($file_name);
 
+
+// $file = file_get_contents('http://site.ru/file.dat');
+
+// if (md5($file) === md5_file('file.dat')) {
+//     echo 'true';
+// }
+// else {
+//     echo 'false';
+// }
+
 if (ob_get_level()) {
       ob_end_clean();
     }
@@ -26,8 +36,16 @@ header('Content-Description: File Transfer');
     header('Pragma: public');
     header('Content-Length: ' . filesize($file));
 
+    // записываем удаленный файл в СУБД
+    $downloaddir = '/storage/';
+    $downloadfile = $downloaddir . basename($file);
+    $hash2 = md5_file($downloadfile);
+    $fields = ['file_id' => $id, 'hash2' => $hash2];
+    removeFiles($fields);
+
     // удаляем файл из файловой системы
     unlink($file);
+
     // читаем файл и отправляем его пользователю
     readfile($file);
     

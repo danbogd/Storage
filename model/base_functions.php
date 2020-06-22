@@ -32,6 +32,20 @@ function fileDel($id) : bool{
 		return true;
 	}
 
+
+function removeFiles(array $fields) : bool{
+	$sql = "INSERT delFiles (file_id, hash2) VALUES (:file_id, :hash2)";
+	dbQuery($sql, $fields);
+	return true;
+	}
+function getDeleteFileById($id) : array{
+	$sql = "SELECT * FROM  delFiles WHERE file_id = $id"; 
+	$query = dbQuery($sql);
+	return $query->fetchAll();
+	}
+
+
+
 function file_download($file) {
   if (file_exists($file)) {
 

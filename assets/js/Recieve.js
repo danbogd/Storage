@@ -24,9 +24,18 @@ const contract = new web3.eth.Contract(abi, contractAddress);
 
 contract.methods.GetHash($("#id").val()).call((err, result) => {
 console.log(result);
-document.getElementById('hash2').textContent = result;
- });
 
+document.getElementById('hash2').textContent = result;
+
+if (hash3 === result){
+	alert("Все в порядке! Хэш загруженного ранее файла совпадает с выгруженным файлом")
+}
+else {
+	alert ("Внимание! Ваш файл был изменен!")
+}
+
+
+ });
 
  
 });

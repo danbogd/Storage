@@ -18,3 +18,5 @@ include_once('core/auth.php');
 include_once('model/base_functions.php');
 include_once('model/users.php');
 include_once('model/sessions.php');
+
+require_once 'SxGeo/SxGeo.php';

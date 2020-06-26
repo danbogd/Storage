@@ -14,11 +14,15 @@
 		</label>
 	</div>
 	<hr>
-	<button class="btn btn-primary">Auth now</button>
+	<button class="btn">Auth now</button>
+
 	<? if($authErr): ?>
 		<hr>
 		<div class="alert alert-danger" >
 			Ошибка ввода
 		</div>
 	<? endif; ?>
+
+	
 </form>
+

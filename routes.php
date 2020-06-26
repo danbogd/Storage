@@ -30,7 +30,7 @@ return (function(){
 		],
 		[
 			'test' => '/^contacts\/?$/',
-			'controller' => 'contacts'
+			'controller' => 'application/contacts'
 		],
 		
 		[

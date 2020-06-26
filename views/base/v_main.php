@@ -26,7 +26,7 @@
 					<a class="nav-link" href="<?=BASE_URL?>">Home</a>
 				</li> -->
 				<li class="nav-item">
-					<a class="nav-link" href="https://localhost/phpmyadmin/">Admin</a>
+					<a class="nav-link" href="https://localhost/phpmyadmin/" target="_blank">Admin</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="<?=BASE_URL?>contacts">Users guide</a>

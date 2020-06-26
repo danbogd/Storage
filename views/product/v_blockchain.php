@@ -4,7 +4,7 @@
 
 
 <style>
-  body { background: url(<?=BASE_URL?>assets/images/bc.jpg); }
+  body { background: url(<?=BASE_URL?>assets/images/3.png); }
 </style>
 
 
@@ -43,7 +43,7 @@
 
 
 
-<a href="https://rinkeby.etherscan.io/tx/" id="tid1" target="_blank">Etherscan</a> 
+<a href="https://rinkeby.etherscan.io/tx/" id="tid1" target="_blank">Посмотреть транзакцию в Etherscan</a> 
 
 
 

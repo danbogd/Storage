@@ -11,9 +11,9 @@
 
 <p><i><b>Дополнительная информация:</b></i></p>
 
-<p><i>ID файла <span><?=$id?></span></i></p>
-<p><i>Хэш файла записанный в блокчейн <span id = "hash2"></span></i></p>
-<p><i>Хэш заггруженного файла <?=$hash3?></i></p>
+<p><i>ID файла <span ><?=$id?></span></i></p>
+<p><i>Хэш файла записанный в блокчейн <span class="hash" id = "hash2"></span></i></p>
+<p><i>Хэш заггруженного файла <span class="hash"><?=$hash3?></span></i></p>
  
 
 <button onclick="document.location='<?=BASE_URL?>/application/user'">Назад</button>

@@ -6,7 +6,7 @@
 
 <p>Перед проверкой не забудьте скачать файл
 </p>
-<button onclick="location.href='<?=BASE_URL?>/application/check/<?=$id?>'">Проверить</button>
+<button class = "first" onclick="location.href='<?=BASE_URL?>/application/check/<?=$id?>'">Проверить</button>
 <hr>
 
 

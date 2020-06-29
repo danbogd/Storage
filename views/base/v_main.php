@@ -14,7 +14,7 @@
 
 			<div class="logo">
 				<div><img src="<?=BASE_URL?>assets/images/osinfo.jpg"></div>
-				<div class="logo__title h3">Хранение данных на блокчейне</div>
+				<div class="logo__title h3">Блокчейн: защита геоинформационных данных.</div>
 				
 			</div>
 		</div>
@@ -44,7 +44,7 @@
 	</div>
 	<footer class="site-footer">
 		<div class="container">
-			&copy; site about all
+			&copy; АО "ГОСИНФОТЕХ"
 		</div>
 	</footer>
 </body>

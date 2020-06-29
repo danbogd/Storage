@@ -40,6 +40,8 @@ if(!file_exists($path)){
 
 include_once($path);
 
+
+
 $html = template('base/v_main', [
 	'title' => $pageTitle,
 	'content' => $pageContent,
@@ -47,3 +49,5 @@ $html = template('base/v_main', [
 ]);
 
 echo $html;
+
+

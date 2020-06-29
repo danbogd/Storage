@@ -4,6 +4,7 @@ $id = (int)URL_PARAMS['id'];
 
 
 $file = fileGetById($id);
+
 $file_name = $file[0]["file_name"];
 
  

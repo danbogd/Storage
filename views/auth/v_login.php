@@ -10,11 +10,11 @@
 	<div class="form-check">
 		<input class="form-check-input" type="checkbox" id="login-remember" name="remember">
 		<label class="form-check-label" for="login-remember">
-			Remember auth to 1 month
+			Запомнить на 1 месяц
 		</label>
 	</div>
 	<hr>
-	<button class="btn">Auth now</button>
+	<button class="btn">Вход</button>
 
 	<? if($authErr): ?>
 		<hr>

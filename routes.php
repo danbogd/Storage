@@ -32,6 +32,11 @@ return (function(){
 			'test' => '/^contacts\/?$/',
 			'controller' => 'application/contacts'
 		],
+
+		[
+			'test' => '/^usergide\/?$/',
+			'controller' => 'application/usergide'
+		],
 		
 		[
 			'test' => "/^application\/user\/?$/",

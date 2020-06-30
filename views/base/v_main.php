@@ -22,18 +22,20 @@
 	<nav class="site-nav">
 		<div class="container">
 			<ul class="nav">
-				<!-- <li class="nav-item">
-					<a class="nav-link" href="<?=BASE_URL?>">Home</a>
-				</li> -->
+				
 				<li class="nav-item">
-					<a class="nav-link" href="https://localhost/phpmyadmin/" target="_blank">Admin</a>
+					<a class="nav-link" href="https://localhost/phpmyadmin/" target="_blank">Вход для администратора</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="<?=BASE_URL?>contacts">Users guide</a>
+					<a class="nav-link" href="<?=BASE_URL?>usergide">Руководство пользователю</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="<?=BASE_URL?>auth/login">Login</a>
+					<a class="nav-link" href="<?=BASE_URL?>auth/login">Вход</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="<?=BASE_URL?>contacts">Контакты</a>
+				</li>
+
 			</ul>
 		</div>
 	</nav>

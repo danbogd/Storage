@@ -24,7 +24,7 @@
 			<ul class="nav">
 				
 				<li class="nav-item">
-					<a class="nav-link" href="https://localhost/phpmyadmin/" target="_blank">Вход для администратора</a>
+					<a class="nav-link" href="https://localhost/phpmyadmin/" target="_blank">Вход для Администратора</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="<?=BASE_URL?>usergide">Руководство пользователю</a>

@@ -24,19 +24,25 @@
 
 
 
-<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>  
-
+ 
+<script type="text/javascript" src="<?=BASE_URL?>assets/js/jquery-3.5.1.min.js"></script>
 
 <hr>
 
-<form   enctype="multipart/form-data"  action="upload.php" method="POST" >
+<p>Внимание! Размер файла не должен превышать 1 Мегабайт.</p>
+
+<form   enctype="multipart/form-data"  action="upload.php" method="post" >
     <!-- Поле MAX_FILE_SIZE должно быть указано до поля загрузки файла -->
-    <input type="hidden" name="MAX_FILE_SIZE" value="3000000" />
+    <!-- <input type="hidden" name="MAX_FILE_SIZE" value="1048576" /> -->
     <!-- Название элемента input определяет имя в массиве $_FILES -->
     Загрузить файлы на сервер: <input name="userfile" type="file" />
    <input  type="submit" value="Загрузить" /> 
-
 </form>
+
+
+
+
+
 
 
 	        

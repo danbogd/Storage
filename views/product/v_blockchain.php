@@ -31,7 +31,7 @@
 <p><i><b>Дополнительная информация:</b></i></p>
 
 
-        <p><i><?=$file_name?> TxID: <span id="tid"></span></i></p> 
+        <p><i><?=$nameFile?> TxID: <span id="tid"></span></i></p> 
         <p><i>Баланс кошелька <span id="balance"></span> ETH</i></p> 
         <p><i>Адрес кошелька <span id="account"></span></i></p>
         <p><i>Адрес контракта в сети Ethereum <span id="contractAddress"></span></i></p>

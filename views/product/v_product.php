@@ -26,6 +26,10 @@
 
  
 <script type="text/javascript" src="<?=BASE_URL?>assets/js/jquery-3.5.1.min.js"></script>
+<script>
+	ethereum.autoRefreshOnNetworkChange = false;
+</script>
+
 
 <hr>
 

@@ -18,6 +18,11 @@
 				
 			</div>
 		</div>
+
+<script>
+	ethereum.autoRefreshOnNetworkChange = false;
+</script>
+
 	</header>
 	<nav class="site-nav">
 		<div class="container">

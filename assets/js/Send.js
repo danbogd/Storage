@@ -18,9 +18,26 @@ const options = {
   }
 };
 
+
 const ethEnabled = () => {  
-  if (window.ethereum) {    window.web3 = new Web3(window.ethereum);    
-    window.ethereum.enable();    
+  if (window.ethereum) {    
+    window.web3 = new Web3(window.ethereum);    
+    //window.ethereum.enable(); 
+
+    window.addEventListener('load', async () => {
+    // Modern dapp browsers...
+    
+             try {
+            // Request account access if needed
+            //await ethereum.enable();
+            const accounts = await ethereum.send('eth_requestAccounts');
+            // Acccounts now exposed
+            web3.eth.sendTransaction({/* ... */});
+        } catch (error) {
+            // User denied account access...
+        }
+    
+});
     return true;  
   }  
     return false;
@@ -31,6 +48,10 @@ if (!ethEnabled()) {
 }
 
 
+
+//MetaMask: MetaMask will soon stop reloading pages on network change.
+//For more information, see: https://docs.metamask.io/guide/ethereum-provider.html
+//ethereum.autoRefreshOnNetworkChange = false;
 
 const abi = [
   {
@@ -231,56 +252,59 @@ const abi = [
     
 
 const contractAddress = '0x60C2218817DEEd3F6888879A68e53B3815275EA8'
-const contract = new web3.eth.Contract(abi, contractAddress)
 
 web3.eth.getAccounts((err, res) => {               
-            
+// текущий адрес из Metamask            
 const account1 = res[0];
 
-// console.log('typeof ethereumjs:',               (typeof ethereumjs))
-// console.log('Object.keys(ethereumjs):',         Object.keys(ethereumjs))
-// console.log('typeof ethereumjs.Tx:',            (typeof ethereumjs.Tx))
-// console.log('typeof ethereumjs.RLP:',           (typeof ethereumjs.RLP))
-// console.log('typeof ethereumjs.Util:',          (typeof ethereumjs.Util))
-// console.log('typeof ethereumjs.Buffer:',        (typeof ethereumjs.Buffer))
-// console.log('typeof ethereumjs.Buffer.Buffer:', (typeof ethereumjs.Buffer.Buffer))
+const contract = new web3.eth.Contract(abi, contractAddress);
+            
+let functionData = contract.methods.WriteToBase($("#id").val(), $("#hash").val()).encodeABI();
 
-
-                                                 
-
-  
-web3.eth.getTransactionCount(account1, (err, txCount) => {
-
-  let txParams = {
-    nonce: web3.utils.toHex(txCount),
-    //nonce: accountNonce,
-    gasPrice: web3.utils.toHex(web3.utils.toWei('20', 'gwei')), 
-    gasLimit: web3.utils.toHex(800000),
-    to:       contractAddress, 
-    //value:    '0x00', 
-    data:     contract.methods.WriteToBase($("#id").val(), $("#hash").val()).encodeABI()  
-  }
-  
-  let tx = new ethereumjs.Tx(txParams)
-  tx.sign(privateKey)
-  
-  let serializedTx = tx.serialize();
-  const raw = '0x' + serializedTx.toString('hex');
-
+// отправка транзакции
+  web3.eth.sendTransaction({
+          to:contractAddress,
+          from:account1,
+          data: functionData,
+      },
+      function(error, response){
+          console.log(response);
+      });
+});                                                
 
   
-  web3.eth.sendSignedTransaction(raw, (err, txHash) => {
-    console.log('err:', err, 'txHash:', txHash);
+// web3.eth.getTransactionCount(account1, (err, txCount) => {
+
+//   let txParams = {
+//     nonce: web3.utils.toHex(txCount),
+//     //nonce: accountNonce,
+//     gasPrice: web3.utils.toHex(web3.utils.toWei('20', 'gwei')), 
+//     gasLimit: web3.utils.toHex(800000),
+//     to:       contractAddress, 
+//     //value:    '0x00', 
+//     data:     contract.methods.WriteToBase($("#id").val(), $("#hash").val()).encodeABI()  
+//   }
+  
+//   let tx = new ethereumjs.Tx(txParams)
+//   tx.sign(privateKey)
+  
+//   let serializedTx = tx.serialize();
+//   const raw = '0x' + serializedTx.toString('hex');
+
+
+  
+//   web3.eth.sendSignedTransaction(raw, (err, txHash) => {
+//     console.log('err:', err, 'txHash:', txHash);
     
     
-    document.getElementById('tid').textContent = txHash;
-  // Use this txHash to find the contract on Etherscan!
-    let txHash2 = 'https://rinkeby.etherscan.io/tx/' + txHash;
-    document.getElementById('tid1').href = txHash2;
-  })
-  })
+//     document.getElementById('tid').textContent = txHash;
+//   // Use this txHash to find the contract on Etherscan!
+//     let txHash2 = 'https://rinkeby.etherscan.io/tx/' + txHash;
+//     document.getElementById('tid1').href = txHash2;
+//   })
+//   })
 
-});
+// });
 
 
 

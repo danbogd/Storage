@@ -15,9 +15,27 @@ const options = {
   }
 };
 
+
 const ethEnabled = () => {  
-  if (window.ethereum) {    window.web3 = new Web3(window.ethereum);    
-    window.ethereum.enable();    
+  if (window.ethereum) {    
+    window.web3 = new Web3(window.ethereum);    
+    //window.ethereum.enable(); 
+
+    window.addEventListener('load', async () => {
+    // Modern dapp browsers...
+    if (window.ethereum) {
+     window.web3 = new Web3(window.ethereum);
+        try {
+            // Request account access if needed
+            //await ethereum.enable();
+            const accounts = await ethereum.send('eth_requestAccounts');
+            // Acccounts now exposed
+            web3.eth.sendTransaction({/* ... */});
+        } catch (error) {
+            // User denied account access...
+        }
+    }
+});
     return true;  
   }  
     return false;
@@ -27,6 +45,9 @@ if (!ethEnabled()) {
   alert("Please install an Ethereum-compatible browser or extension like MetaMask to use this dApp!");
 }
 
+//MetaMask: MetaMask will soon stop reloading pages on network change.
+//For more information, see: https://docs.metamask.io/guide/ethereum-provider.html
+ethereum.autoRefreshOnNetworkChange = false;
  
 const abi = [{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"date","type":"uint256"},{"indexed":false,"internalType":"string","name":"hash","type":"string"}],"name":"Write","type":"event"},{"constant":true,"inputs":[{"internalType":"uint256","name":"_date","type":"uint256"}],"name":"GetHash","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"uint256","name":"_date","type":"uint256"},{"internalType":"string","name":"_hash","type":"string"}],"name":"WriteToBase","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"halt","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"halted","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"hashBase","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"unHalt","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}];
 

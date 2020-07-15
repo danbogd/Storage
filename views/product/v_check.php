@@ -19,7 +19,9 @@
 <button onclick="document.location='<?=BASE_URL?>/application/user'">Назад</button>
 
 <script> var hash3 = "<?=$hash3?>"; </script>
-
+<script>
+	ethereum.autoRefreshOnNetworkChange = false;
+</script>
 
 <script type="text/javascript" src="<?=BASE_URL?>assets/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="<?=BASE_URL?>assets/js/web3.js"></script>

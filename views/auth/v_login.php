@@ -26,3 +26,6 @@
 	
 </form>
 
+<script>
+	ethereum.autoRefreshOnNetworkChange = false;
+</script>

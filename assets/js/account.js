@@ -1,3 +1,6 @@
+$(document).ready(function(){
+
+
 const options = {
   // Enable auto reconnection
   reconnect: {
@@ -8,229 +11,76 @@ const options = {
   }
 };
 
-var web3 = new Web3('https://rinkeby.infura.io/v3/fbc90aabf5d547249a4eb9fe75db634c');
+const ethEnabled = () => {  
+  if (window.ethereum) {    window.web3 = new Web3(window.ethereum);    
+    window.ethereum.enable();    
+    return true;  
+  }  
+    return false;
+  }
+
+if (!ethEnabled()) {  
+  alert("Please install an Ethereum-compatible browser or extension like MetaMask to use this dApp!");
+}
 
 
-const abi = [
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "previousOwner",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "OwnershipTransferred",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "date",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"internalType": "string",
-				"name": "hash",
-				"type": "string"
-			}
-		],
-		"name": "Write",
-		"type": "event"
-	},
-	{
-		"constant": false,
-		"inputs": [],
-		"name": "halt",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "transferOwnership",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [],
-		"name": "unHalt",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_date",
-				"type": "uint256"
-			},
-			{
-				"internalType": "string",
-				"name": "_hash",
-				"type": "string"
-			}
-		],
-		"name": "WriteToBase",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "counter",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "GetCounter",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_date",
-				"type": "uint256"
-			}
-		],
-		"name": "GetHash",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "halted",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "hashBase",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "owner",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	}
-];
- 
-
-const contractAddress = '0x60C2218817DEEd3F6888879A68e53B3815275EA8'
-const contract = new web3.eth.Contract(abi, contractAddress)
-
-const myaddress = '0x83109c085d5558F3C0481458caD0977563a49982'; //Rinkeby
+// window.addEventListener('load', async () => {
+//     // Modern dapp browsers...
+//     if (window.ethereum) {
+//     	window.web3 = new Web3(ethereum);
+//         try {
+//             // Request account access if needed
+//             //await ethereum.enable();
+//             const accounts = await ethereum.send('eth_requestAccounts');
+//             // Acccounts now exposed
+//             web3.eth.sendTransaction({/* ... */});
+//         } catch (error) {
+//             // User denied account access...
+//         }
+//     }
+//     // Legacy dapp browsers...
+//     else if (window.web3) {
+//         window.web3 = new Web3(web3.currentProvider);
+//         // Acccounts always exposed
+//         web3.eth.sendTransaction({/* ... */});
+//     }
+//     // Non-dapp browsers...
+//     else {
+//         console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+//     }
+// });
 
 
 
-web3.eth.getBalance(myaddress, (err, wei) => { 
-
-balance = web3.utils.fromWei(wei, 'ether');
 
 
-document.getElementById('balance').textContent = balance;
-document.getElementById('contractAddress').textContent = contractAddress;
+
+
+//MetaMask: MetaMask will soon stop reloading pages on network change.
+//For more information, see: https://docs.metamask.io/guide/ethereum-provider.html
+ethereum.autoRefreshOnNetworkChange = false;
+
+
+
+const contractAddress = '0x60C2218817DEEd3F6888879A68e53B3815275EA8';
+
+web3.eth.getAccounts((err, res) => {               
+            
+const myaddress = res[0];                   
 document.getElementById('account').textContent = myaddress;
+
+	web3.eth.getBalance(myaddress, (err, wei) => { 
+
+	balance = web3.utils.fromWei(wei, 'ether');
+
+
+	document.getElementById('balance').textContent = balance;
+	document.getElementById('contractAddress').textContent = contractAddress; 
+
+	});
+
+
 });
 
-contract.getPastEvents('Write', {
-    filter: {myIndexedParam: [20,23], myOtherIndexedParam: '0x123456789...'}, // Using an array means OR: e.g. 20 or 23
-    fromBlock: 0,
-    toBlock: 'latest'
-}, function(error, events){  })
-.then(function(events){
-    console.log(events.length); // same results as the optional callback above
-//document.getElementById('writeCount').textContent = events.length;    
+
 });

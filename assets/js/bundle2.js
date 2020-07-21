@@ -1,32 +1,23 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-// install npm ethereumjs-abi, broserify, beefy
-// для обновления этого файла запусти в терминале browserify index.js > bundle.js
+// для обновления этого файла запусти в терминале browserify index2.js > bundle2.js
 
-//data для функции WriteToBase
-const idValue = document.querySelector('#id').value;
-const hashValue = document.querySelector('#hash').value;
+
+// data для функции getHah
+
 // библиотека ethereumjs-abi
-var abi = require('ethereumjs-abi')
-// сигнатура функции
-var sig = '0x85add564';
+var abi = require('ethereumjs-abi');
 
-// тип входных данных
-var parameterTypes = ["uint", "string"];
-var parameterValues = [idValue, hashValue];
-
-var encoded = abi.rawEncode(parameterTypes, parameterValues);
-
+var sig2 = '0xa5db5463';
+            
+const idValue2 = document.querySelector('#id2').value;
+console.log(document.querySelector('#id2'));
+var parameterTypes2 = ["uint256"];
+var parameterValues2 = [idValue2];
+var encoded = abi.rawEncode(parameterTypes2, parameterValues2);
 // поле data для транзакции
-var data = sig + encoded.toString('hex');
-
-document.getElementById('data').textContent = data;
-
-
-
-
-  
-
-
+var data2 = sig2 + encoded.toString('hex');
+console.log(data2);
+document.getElementById('data2').textContent = data2;
 },{"ethereumjs-abi":26}],2:[function(require,module,exports){
 (function (module, exports) {
   'use strict';

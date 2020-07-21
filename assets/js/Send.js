@@ -43,20 +43,7 @@ const sendTranButton = document.querySelector('.send');
 sendTranButton.addEventListener('click', () => {
 
   ethereum
-    .request({
-      method: 'eth_sendTransaction',
-      params: [
-        {
-          from: ethereum.selectedAddress,
-          to: '0x60C2218817DEEd3F6888879A68e53B3815275EA8',
-          //value: '0x29a2241af62c0000',
-          //gasPrice: '0x09184e72a000',
-          //gas: '0x2710',
-          data: encodeData,
-          
-        },
-      ],
-    })
+    .request({method: 'eth_sendTransaction', params: [{ from: ethereum.selectedAddress, to: contractAddress, value: '38D7EA4C68000', data: encodeData,},], })
     
     .then((txHash) => getTxHashLink(txHash))
         
@@ -67,7 +54,7 @@ sendTranButton.addEventListener('click', () => {
 // функция для вывода хэша транзакции на страницу и ссылки на Etherscan
 function getTxHashLink(txHash){
   document.getElementById('tid').textContent = txHash
-  let txHash2 = 'https://rinkeby.etherscan.io/tx/' + txHash; 
+  let txHash2 = 'https://kovan.etherscan.io/tx/' + txHash; 
   document.getElementById('tid1').href = txHash2;
 }
 

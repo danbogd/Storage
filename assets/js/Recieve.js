@@ -1,62 +1,58 @@
 
 
-// $("#button3").click(function() {
-$(document).ready(function(){
 
 
-
-const options = {
-  // Enable auto reconnection
-  reconnect: {
-      auto: true,
-      delay: 5000, // ms
-      maxAttempts: 5,
-      onTimeout: false
-  }
-};
-
-
-const ethEnabled = () => {  
-  if (window.ethereum) {    
-    window.web3 = new Web3(window.ethereum);    
-    //window.ethereum.enable(); 
-
-    window.addEventListener('load', async () => {
-    // Modern dapp browsers...
-    if (window.ethereum) {
-     window.web3 = new Web3(window.ethereum);
-        try {
-            // Request account access if needed
-            //await ethereum.enable();
-            const accounts = await ethereum.send('eth_requestAccounts');
-            // Acccounts now exposed
-            web3.eth.sendTransaction({/* ... */});
-        } catch (error) {
-            // User denied account access...
-        }
-    }
-});
-    return true;  
-  }  
-    return false;
+if (typeof window.ethereum == 'undefined') {
+    alert('Установите MetaMask!');
   }
 
-if (!ethEnabled()) {  
-  alert("Please install an Ethereum-compatible browser or extension like MetaMask to use this dApp!");
-}
+ 
+
+const contractAddress = '0x60C2218817DEEd3F6888879A68e53B3815275EA8';
+   
+          
 
 //MetaMask: MetaMask will soon stop reloading pages on network change.
 //For more information, see: https://docs.metamask.io/guide/ethereum-provider.html
 ethereum.autoRefreshOnNetworkChange = false;
+
+encodeData2 = document.querySelector('#data2').textContent;
+console.log(encodeData2);
+
  
-const abi = [{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"date","type":"uint256"},{"indexed":false,"internalType":"string","name":"hash","type":"string"}],"name":"Write","type":"event"},{"constant":true,"inputs":[{"internalType":"uint256","name":"_date","type":"uint256"}],"name":"GetHash","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"uint256","name":"_date","type":"uint256"},{"internalType":"string","name":"_hash","type":"string"}],"name":"WriteToBase","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"halt","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"halted","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"hashBase","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"unHalt","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}];
+ethereum
+  .request({
+    method: 'eth_call',
+    params: [
+  {
+    from: ethereum.selectedAddress,
+    to: contractAddress,
+    //gas: '0x76c0', // 30400
+    //gasPrice: '0x9184e72a000', // 10000000000000
+    //value: '0x9184e72a', // 2441406250
+    data: encodeData2,
+  },
+],
+  })
+  .then((result) => checkHashes(hex_to_ascii(result))) 
+      
+  .catch((error) => console.error);
+    
+// функция перевода из hex в строку, n=128 - откидываем лишние 0
+function hex_to_ascii(str1)
+ {
+  var hex  = str1.toString();
+  var str = '';
+  for (var n = 130; n < hex.length; n += 2) {
+    str += String.fromCharCode(parseInt(hex.substr(n, 2), 16));
+  }
+  return str;
+ }
 
-const contractAddress = '0x60C2218817DEEd3F6888879A68e53B3815275EA8';
-const contract = new web3.eth.Contract(abi, contractAddress);
-
-contract.methods.GetHash($("#id").val()).call((err, result) => {
+// функция сравнения хэша загруженного файла с выгруженным
+function checkHashes(result){
 console.log(result);
-
+console.log(hash3);
 document.getElementById('hash2').textContent = result;
 
 if (hash3 === result){
@@ -70,11 +66,10 @@ else {
 	alert ("Внимание!!! Ваш файл был изменен!");
 }
 
-
- });
-
+}
  
-});
+ 
+
 
 
 

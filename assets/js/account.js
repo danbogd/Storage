@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  // адрес смарт-контракта в сети Rinkeby и его вывод на страницу
+  // адрес смарт-контракта в сети Kovan и его вывод на страницу
   const contractAddress = '0x60C2218817DEEd3F6888879A68e53B3815275EA8';
   document.getElementById('contractAddress').textContent = contractAddress; 
 

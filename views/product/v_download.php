@@ -39,6 +39,7 @@
 <script>
 	ethereum.autoRefreshOnNetworkChange = false;
 </script>
+ 
 
 <button onclick="document.location='<?=BASE_URL?>/application/user'">Назад</button>
 

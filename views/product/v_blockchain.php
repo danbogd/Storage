@@ -42,6 +42,7 @@
 <input id = "id" type="hidden" name="id" value="<?=$id?>">
 <input id = "data" type="hidden" name="">
 
+
 <script src="<?=BASE_URL?>assets/js/bundle.js"></script> 
 
 

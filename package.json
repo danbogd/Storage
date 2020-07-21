@@ -1,0 +1,34 @@
+{
+  "name": "storage",
+  "version": "1.0.0",
+  "description": "записывает hash загружаемого файла в блокчен",
+  
+  "dependencies": {
+    "ethereumjs-abi": "0.6.8"
+  },
+
+  "devDependencies": {
+    "browserify": "latest"
+  },
+
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danbogd/Storage.git"
+  },
+  "keywords": [
+    "solidity",
+    "smart-contract",
+    "storage",
+    "hash"
+  ],
+  "author": "Bogdanov Denis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danbogd/Storage/issues"
+  },
+  "homepage": "https://github.com/danbogd/Storage#readme"
+}

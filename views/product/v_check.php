@@ -23,6 +23,11 @@
 	ethereum.autoRefreshOnNetworkChange = false;
 </script>
 
+<input id = "data2" type="hidden" name="data2">
+<input id = "id2" type="hidden" name="id2" value="<?=$id?>">
+
+<script src="<?=BASE_URL?>assets/js/bundle2.js?v=2.0"></script>
+
 <script type="text/javascript" src="<?=BASE_URL?>assets/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="<?=BASE_URL?>assets/js/web3.js"></script>
 <script type="text/javascript" src="<?=BASE_URL?>assets/js/Recieve.js"></script>
